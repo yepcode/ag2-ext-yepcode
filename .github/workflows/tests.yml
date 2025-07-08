@@ -1,0 +1,23 @@
+name: Tests
+on:
+  workflow_call:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.12-slim
+      env:
+        YEPCODE_API_TOKEN: ${{ secrets.TEST_YEPCODE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure poetry
+        run: |-
+          apt update && apt install -y curl gcc g++ && curl -sSL https://install.python-poetry.org | python3 -
+          export PATH="${PATH}:${HOME}/.local/bin"
+          echo "${HOME}/.local/bin" >> $GITHUB_PATH
+          poetry install
+      - name: Run pytest
+        run: "poetry run pytest"
+      - name: Build
+        run: "poetry build"

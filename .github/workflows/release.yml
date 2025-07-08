@@ -1,0 +1,41 @@
+name: Release
+on:
+  push:
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.12-slim
+      env:
+        YEPCODE_API_TOKEN: ${{ secrets.TEST_YEPCODE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure poetry
+        run: |-
+          apt update && apt install -y curl gcc g++ && curl -sSL https://install.python-poetry.org | python3 -
+          export PATH="${PATH}:${HOME}/.local/bin"
+          echo "${HOME}/.local/bin" >> $GITHUB_PATH
+          poetry install
+      - name: Build
+        run: "poetry build"
+      - name: Publish
+        run: "poetry config pypi-token.pypi ${{ secrets.PUBLIC_YEPCODE_PYPI_API_TOKEN }} && poetry publish"
+  create_release:
+    needs: deploy
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          draft: false
+          prerelease: false
