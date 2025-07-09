@@ -35,6 +35,7 @@ pip install ag2_ext_yepcode
 1. **Create a YepCode Account**: Sign up at [yepcode.io](https://yepcode.io/)
 2. **Get Your API Token**: Navigate to `Settings` > `API credentials` in your YepCode workspace
 3. **Set Environment Variable**:
+
    ```bash
    export YEPCODE_API_TOKEN="your-api-token-here"
    ```
