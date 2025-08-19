@@ -1,4 +1,4 @@
-![YepCode Run SDK Preview](/readme-assets/cover.png)
+![YepCode Run SDK Preview](https://yepcode.io/images/cover/yepcode-ultimate-dev-tool-ai-solutions.png)
 
 <div align="center">
 
