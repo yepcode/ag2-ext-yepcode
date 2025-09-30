@@ -10,7 +10,7 @@
 
 # AG2 Extension for YepCode
 
-An [AG2](https://ag2.ai/) (formerly AutoGen) extension that enables secure code execution using [YepCode's](https://yepcode.io/) serverless runtime environment. Execute Python and JavaScript code in production-grade, isolated sandboxes with built-in security and scalability.
+An [AG2](https://ag2.ai/) (formerly AutoGen) extension that enables secure code execution using [YepCode's](https://yepcode.io/l/J80qg) serverless runtime environment. Execute Python and JavaScript code in production-grade, isolated sandboxes with built-in security and scalability.
 
 > **Note**: AG2 was evolved from AutoGen. If you are looking for the extension for AutoGen, please check the [autogen-ext-yepcode](https://github.com/yepcode/autogen-ext-yepcode) repository.
 
@@ -32,7 +32,7 @@ pip install ag2_ext_yepcode
 
 ## Setup
 
-1. **Create a YepCode Account**: Sign up at [yepcode.io](https://yepcode.io/)
+1. **Create a YepCode Account**: Sign up at [yepcode.io](https://yepcode.io/l/J80qg)
 2. **Get Your API Token**: Navigate to `Settings` > `API credentials` in your YepCode workspace
 3. **Set Environment Variable**:
 
